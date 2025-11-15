@@ -13,7 +13,7 @@ import { logMessageReceived, logSuccess, logError } from '../../services/logger.
 // Store messages by group and date
 let messages = {};
 
-const client = createWhatsAppClient();
+const client = await createWhatsAppClient();
 
 client.on('message', async (msg) => {
   const metadata = await extractMessageMetadata(msg);

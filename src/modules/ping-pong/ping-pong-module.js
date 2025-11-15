@@ -9,7 +9,7 @@ import { ALLOWED_GROUPS, BOT_COMMANDS } from '../../config/app.js';
 import { extractMessageMetadata, isAllowedGroup } from '../../handlers/message-handler.js';
 import { logMessageReceived, logSuccess, logError } from '../../services/logger.js';
 
-const client = createWhatsAppClient();
+const client = await createWhatsAppClient();
 
 client.on('message', async (msg) => {
   try {

@@ -4,19 +4,29 @@
  */
 
 import pkg from 'whatsapp-web.js';
+import { MongoStore } from '@wwebjs/mongodb-auth';
+import mongoose from 'mongoose';
 import qrcode from 'qrcode-terminal';
 import { PUPPETEER_CONFIG } from '../config/app.js';
 import { logInfo, logSuccess, logError } from './logger.js';
 
-const { Client, LocalAuth } = pkg;
+const { Client, RemoteAuth } = pkg;
 
 /**
  * Creates and initializes WhatsApp client
- * @returns {Object} WhatsApp client instance
+ * @returns {Promise<Object>} WhatsApp client instance
  */
-export function createWhatsAppClient() {
+export async function createWhatsAppClient() {
+  logInfo('Conectando ao MongoDB...');
+  await mongoose.connect(process.env.MONGODB_URI);
+  logSuccess('MongoDB conectado!');
+
+  const store = new MongoStore({ mongoose: mongoose });
   const client = new Client({
-    authStrategy: new LocalAuth(),
+    authStrategy: new RemoteAuth({
+      store: store,
+      backupSyncIntervalMs: 300000
+    }),
     puppeteer: PUPPETEER_CONFIG
   });
 
@@ -36,4 +46,4 @@ export function createWhatsAppClient() {
   return client;
 }
 
-export { Client, LocalAuth };
+export { Client, RemoteAuth };
