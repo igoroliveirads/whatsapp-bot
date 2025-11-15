@@ -1,0 +1,37 @@
+{
+  "name": "whatsapp-bot",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "start.js",
+  "scripts": {
+    "start": "node start.js summary",
+    "start:summary": "node start.js summary",
+    "start:ping-pong": "node start.js ping-pong",
+    "start:discovery": "node start.js discovery",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "automation",
+    "ai",
+    "gemini"
+  ],
+  "author": "igoroliveirads",
+  "license": "ISC",
+  "description": "WhatsApp bot with AI integration (Gemini) for group summaries and automation",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/igoroliveirads/whatsapp-bot.git"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "dotenv": "^17.2.3",
+    "node-cron": "^4.2.1",
+    "puppeteer": "^24.30.0",
+    "qrcode-terminal": "^0.12.0",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
+    "whatsapp-web.js": "^1.34.2"
+  }
+}
