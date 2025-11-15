@@ -4,7 +4,7 @@
  */
 
 import pkg from 'whatsapp-web.js';
-import { MongoStore } from '@wwebjs/mongodb-auth';
+import { MongoStore } from 'wwebjs-mongo';
 import mongoose from 'mongoose';
 import qrcode from 'qrcode-terminal';
 import { PUPPETEER_CONFIG } from '../config/app.js';
